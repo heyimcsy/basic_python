@@ -17,3 +17,9 @@ text = 'abcdefghijk'
 result = text[3:7]
 
 print(result)
+
+myemail = 'abc@sparta.com'
+
+email = myemail.split('@')[1].split('.')[0]
+
+print(email)

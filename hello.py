@@ -1,3 +1,10 @@
-first_name = 'seoyoon'
-last_name = 'Choi'
-print(first_name + last_name)
+a = '나는 호구다'
+b = a + ' 배고프다'
+
+# str 숫자를 string으로 변환해주는 함수
+c = str(2)
+d = c + '숫자와 문자의 합침은 에러'
+
+print(b)
+
+print(d)

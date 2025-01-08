@@ -8,3 +8,12 @@ d = c + '숫자와 문자의 합침은 에러'
 print(b)
 
 print(d)
+
+text = 'abcdefghijk'
+# result = len(text)
+# result = text[:3]
+# result = text[3:]
+# result = text[:] 복사
+result = text[3:7]
+
+print(result)

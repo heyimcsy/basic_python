@@ -1,4 +1,3 @@
-a = 3
-b = 3
+a = 2 / 2 == 1.5
 
-print(a ** b)
+print(a)

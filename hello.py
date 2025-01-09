@@ -20,6 +20,21 @@ print(result)
 
 myemail = 'abc@sparta.com'
 
-email = myemail.split('@')[1].split('.')[0]
-
+email = myemail.split('@')[1].split('.')[0][:3]
 print(email)
+
+phone = '02-123-1234'
+
+phoneResult = phone.split('-')[0]
+
+print(phoneResult)
+
+# list 순서가 중요하게 값을 담는다.
+# 딕셔너리는 키벨류로 값을 담는다.
+
+a_list = ['사과', '배', '감']
+a_list.append('수박')
+
+a_list.sort(reverse=True)
+
+print(a_list)

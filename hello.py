@@ -35,6 +35,6 @@ print(phoneResult)
 a_list = ['사과', '배', '감']
 a_list.append('수박')
 
-a_list.sort(reverse=True)
+result_a = ('사과' in a_list)
 
-print(a_list)
+print(result_a)

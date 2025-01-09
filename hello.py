@@ -37,4 +37,11 @@ a_list.append('수박')
 
 result_a = ('사과' in a_list)
 
-print(result_a)
+b_dict = {'name': 'bob', 'age': 30, 'job': 'engineer'}
+
+b_dict['age'] = 50
+b_dict['height'] = 155
+
+result_b = b_dict
+
+print(result_b)

@@ -25,8 +25,17 @@ people = [
     {'name': 'queen', 'age': 25}
 ]
 
-for person in people:
+for i, person in enumerate(people):
     name = person['name']
     age = person['age']
     if age >= 25:
-        print(name,'s age is', age)
+        print(i, name,'s age is', age)
+    if i > 3:
+        break
+
+
+num_list = [1, 2, 3, 6, 3, 2, 4, 5, 6, 2, 4]
+
+for num in num_list:
+    if num % 2 == 0:
+        print(num)

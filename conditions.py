@@ -36,6 +36,20 @@ for i, person in enumerate(people):
 
 num_list = [1, 2, 3, 6, 3, 2, 4, 5, 6, 2, 4]
 
-for num in num_list:
-    if num % 2 == 0:
-        print(num)
+# 짝수 띄우기
+# count = 0
+# for num in num_list:
+#     if num % 2 == 0:
+#         count = count + 1
+# print(count)
+
+# 전체 수 더하기
+# totalSum = 0
+# for num in num_list:
+#     totalSum = totalSum + num
+# print(totalSum)
+
+# 가장 큰 수
+num_list.sort(reverse=True)
+
+print(num_list[0])

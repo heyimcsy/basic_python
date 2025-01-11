@@ -15,10 +15,15 @@ people = [
 #     else:
 #         return '청소년'
 
-def check_adult(person):
-    return ('성인' if person['age'] > 20 else '청소년')
+# def check_adult(person):
+#     return ('성인' if person['age'] > 20 else '청소년')
+#
+# # result = map(check_adult, people)
+# result = map(lambda person: ('성인' if person['age'] > 20 else '청소년'), people)
+#
+# print(list(result))
 
-# result = map(check_adult, people)
-result = map(lambda person: ('성인' if person['age'] > 20 else '청소년'), people)
+# lamda에서는 관용적으로 x라고 많이 사용한다.
+result = filter(lambda x: x['age'] > 20, people)
 
 print(list(result))

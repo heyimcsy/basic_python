@@ -62,3 +62,15 @@ for person in people:
     except:
         print(person['name'], '에러입니다')
 
+
+num = 3
+
+result = ('짝수' if num % 2 == 0 else '홀수')
+
+print(f'{num}은 {result}입니다.')
+
+a_list = [1,3,2,5,1,2]
+
+b_list = [a * 2 for a in a_list]
+
+print(b_list)

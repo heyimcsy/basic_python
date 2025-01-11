@@ -27,3 +27,20 @@ people = [
 result = filter(lambda x: x['age'] > 20, people)
 
 print(list(result))
+
+def cal(a ,b= 6 ):
+    return a+2*b
+
+# print(cal(b=5,a=2))
+print(cal(2))
+
+def cals(*args):
+    for name in args:
+        print(f'{name} 밥먹어라!')
+
+cals('영수', '철수', '민서')
+
+def cel(**kwargs):
+    print(kwargs)
+
+cel(name= '영수',age = 30 )

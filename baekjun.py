@@ -2,9 +2,12 @@ import sys
 from io import StringIO
 
 # 테스트 입력을 문자열로 제공
-test_input ="""0 1 0 1
-1 1 1 0
-0 0 1 1"""
+test_input ="""5
+5
+4
+3
+2
+1"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
@@ -13,15 +16,11 @@ sys.stdin = StringIO(test_input)
 text = sys.stdin.read().splitlines()
 print(text)
 
-for n in text:
-    print(n.count('0'))
-    if n.count('0') == 1:
-        print('A')
-    elif n.count('0') == 2:
-        print('B')
-    elif n.count('0') == 3:
-        print('C')
-    elif n.count('0') == 4:
-        print('D')
-    else:
-        print('E')
+tall = 0
+count = 0
+for number in text[:0:-1]:
+    number = int(number)
+    if number > tall:
+        tall = number
+        count += 1
+print(count)

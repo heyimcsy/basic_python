@@ -33,67 +33,67 @@ else:
     print(count)
 
 
-#
-# import heapq as hq
-# import sys
-# input = sys.stdin.readline
-#
-# n, h, t = map(int,input().split())
-# g = []
-# cnt = 0
-# for _ in range(n):
-#     hq.heappush(g,-int(input()))
-#
-# while t>0:
-#     x = hq.heappop(g)
-#     if -x< h:
-#         hq.heappush(g,-x)
-#         break
-#     if x<-1:
-#         hq.heappush(g,int(x/2))
-#     else:
-#         hq.heappush(g,-1)
-#     cnt +=1
-#     t -= 1
-#
-# talleset = -hq.heappop(g)
-#
-# if talleset<h:
-#     print("YES")
-#     print(cnt)
-# else:
-#     print("NO")
-#     print(talleset)
-#
-#     import heapq
-# import sys
-#
-# [n, H, T] = list(map(int, sys.stdin.readline().split()))
-# titans = []
-# count = 0
-#
-# for i in range(n):
-#     titans.append(-int(sys.stdin.readline().strip()))
-#
-#
-# heapq.heapify(titans)
-#
-# for i in range(T):
-#     tallest = -heapq.heappop(titans)
-#
-#     if tallest < H:
-#         heapq.heappush(titans, -tallest)
-#         break
-#     if tallest <= 1:
-#         heapq.heappush(titans, -tallest)
-#         break
-#
-#     heapq.heappush(titans, -(tallest // 2))
-#     count+=1
-#
-# if -titans[0] < H:
-#     print("YES")
-#     print(count)
-# else:
-#     print("NO")
-#     print(-titans[0])
+
+import heapq as hq
+import sys
+input = sys.stdin.readline
+
+n, h, t = map(int,input().split())
+g = []
+cnt = 0
+for _ in range(n):
+    hq.heappush(g,-int(input()))
+
+while t>0:
+    x = hq.heappop(g)
+    if -x< h:
+        hq.heappush(g,-x)
+        break
+    if x<-1:
+        hq.heappush(g,int(x/2))
+    else:
+        hq.heappush(g,-1)
+    cnt +=1
+    t -= 1
+
+talleset = -hq.heappop(g)
+
+if talleset<h:
+    print("YES")
+    print(cnt)
+else:
+    print("NO")
+    print(talleset)
+
+    import heapq
+import sys
+
+[n, H, T] = list(map(int, sys.stdin.readline().split()))
+titans = []
+count = 0
+
+for i in range(n):
+    titans.append(-int(sys.stdin.readline().strip()))
+
+
+heapq.heapify(titans)
+
+for i in range(T):
+    tallest = -heapq.heappop(titans)
+
+    if tallest < H:
+        heapq.heappush(titans, -tallest)
+        break
+    if tallest <= 1:
+        heapq.heappush(titans, -tallest)
+        break
+
+    heapq.heappush(titans, -(tallest // 2))
+    count+=1
+
+if -titans[0] < H:
+    print("YES")
+    print(count)
+else:
+    print("NO")
+    print(-titans[0])

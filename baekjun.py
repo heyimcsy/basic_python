@@ -4,9 +4,22 @@ from collections import deque
 from io import StringIO
 
 # 테스트 입력을 문자열로 제공
-test_input ="""5
+test_input ="""18
+1
+-1
 0
-2 3 2
+0
+0
+1
+1
+-1
+-1
+2
+-2
+0
+0
+0
+0
 0
 0
 0"""
@@ -14,30 +27,24 @@ test_input ="""5
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-# text = sys.stdin.read().splitlines()
-# gifts = []
-# heap = [-n for n in list(gifts)]
-# N = int(text[0])
-# for t in text[1:1+N]:
-#     if t == '0':
-#         if len(heap):
-#             print(-heapq.heappop(heap))
-#         else:
-#             print(-1)
-#     else:
-#         for i in t.split()[1:]:
-#             heapq.heappush(heap, -int(i))
+input = sys.stdin.readline  # 빠른 입력을 위한 최적화
+heap = []  # 우선순위 큐 (절댓값 기준 정렬)
 
-text = sys.stdin.read().splitlines()
-heap = []
-N = int(text[0])
-for t in text[1:1+N]:
-    if t == '0':
-        if heap:
-            print(-heapq.heappop(heap))
-        else:
-            print(-1)
+N = int(input().strip())  # 연산 개수 입력
+output = []  # 결과 저장 리스트
+
+for _ in range(N):
+    x = int(input().strip())
+
+    if x != 0:
+        # 절댓값 기준 정렬을 위해 (절댓값, 원래 값) 저장
+        heapq.heappush(heap, (abs(x), x))
     else:
-        # push 방식을 유지
-        for num in map(int, t.split()[1:]):
-            heapq.heappush(heap, -num)  # 최대 힙 유지 (음수 변환)
+        # 힙이 비어있으면 0 출력, 아니면 최소값 출력
+        if heap:
+            output.append(str(heapq.heappop(heap)[1]))
+        else:
+            output.append("0")
+
+# 한 번에 출력하여 I/O 최적화
+sys.stdout.write("\n".join(output) + "\n")

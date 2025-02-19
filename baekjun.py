@@ -1,51 +1,33 @@
 import sys
-
-from collections import defaultdict
 from io import StringIO
 
 # 테스트 입력을 문자열로 제공
-test_input ="""5
-2 4 -10 4 -9"""
+test_input ="""2
+
+1 1
+1
+1
+
+3 2
+1 3 2
+5 5"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
 N = int(sys.stdin.readline().strip())
-lists = list(map(int, sys.stdin.readline().split()))
-sorted_lists = sorted(set(lists))
+text = [line.strip() for line in sys.stdin.readlines() if line.strip()]  # 공백 줄 제거
+for i in range(N):
+    sejin = sorted(list(map(int, text[(i * 3) + 1].split(' '))), reverse=True)
+    sebi = sorted(list(map(int, text[(i * 3) + 2].split(' '))), reverse=True)
 
-list_dict = {value: idx for idx, value in enumerate(sorted_lists)}
-print(" ".join(str(list_dict[x]) for x in lists))
-# # 테스트 입력을 문자열로 제공
-# test_input ="""8
-# sbrus.txt
-# spc.spc
-# acm.icpc
-# korea.icpc
-# sample.txt
-# hello.world
-# sogang.spc
-# example.txt"""
-#
-# # sys.stdin을 대체
-# sys.stdin = StringIO(test_input)
-#
-# N = int(sys.stdin.readline().strip())
-# files = defaultdict(int)
-#
-# for _ in range(N):
-#     _, ext = sys.stdin.readline().strip().rsplit('.', 1)
-#     files[ext] += 1
-# for ext in sorted(files):
-#     print(ext, files[ext])
+    # 최댓값 찾기
+    max_sejin = sejin[0]
+    max_sebi = sebi[0]
 
-# files = {}
-# for _ in range(N):
-#     text = sys.stdin.readline().split()[0].split('.')[1]
-#     if text in files:
-#         files[text] += 1
-#     else:
-#         files[text] = 1
-#
-# for ext, count in sorted(files.items()):
-#     print(ext, count)
+    if sejin[0] >= sebi[0]:
+        print("S")
+    elif sebi[0] > sejin[0]:
+        print("B")
+    else:
+        print("C")

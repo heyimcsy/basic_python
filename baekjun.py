@@ -1,21 +1,19 @@
 import sys
 from io import StringIO
 
-# 백준 2884
-test_input ="""23 40"""
+# 백준 2753
+test_input ="""2401"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-H, M = map(int, sys.stdin.readline().split(' '))
+Y = int(sys.stdin.readline())
 
-if M - 45 >= 0:
-    M = M - 45
+if Y % 100 != 0 and Y % 4 == 0:
+    print(1)
+elif Y % 100 == 0 and Y % 400 == 0:
+    print(1)
+elif Y % 100 == 0 and Y % 400 != 0:
+    print(0)
 else:
-    if H == 0:
-        H = 23
-    else:
-        H = H - 1
-    M = 60 + (M - 45)
-time = [H, M]
-print(" ".join(map(str, time)))
+    print(0)

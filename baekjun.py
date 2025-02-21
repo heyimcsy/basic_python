@@ -1,23 +1,34 @@
+import math
+import heapq
 import sys
 from io import StringIO
 
-# 백준 1009
-test_input ="""5
-1 6
-3 7
-6 2
-7 100
-9 635"""
+# 백준 31860
+test_input ="""2 5 3
+10
+18"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-N = int(sys.stdin.readline())
-
+N, M, K = map(int, sys.stdin.readline().split(" "))
+count = 0
+satisfy = 0
+satisfy_list = []
+works = []
 for i in range(N):
-    F, S = list(map(int,sys.stdin.readline().split(" ")))
-    if F % 10 == 0:
-        print(10)
-    else:
-        last_digit = pow(F, S, 10)
-        print(last_digit)
+    work = int(sys.stdin.readline().strip())
+    works.append(-work)
+
+heapq.heapify(works)
+while -works[0] > K:
+    count += 1
+    max_work = -heapq.heappop(works)
+    satisfy = math.trunc((satisfy / 2) + max_work)
+    satisfy_list.append(satisfy)
+    max_work = max_work - M
+    heapq.heappush(works, -max_work)
+
+print(count)
+print(*satisfy_list, sep='\n')
+

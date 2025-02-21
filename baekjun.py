@@ -3,32 +3,34 @@ import heapq
 import sys
 from io import StringIO
 
-# 백준 31860
-test_input ="""2 5 3
-10
-18"""
+# 백준 28278
+test_input ="""9
+4
+1 3
+1 5
+3
+2
+5
+2
+2
+5"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-N, M, K = map(int, sys.stdin.readline().split(" "))
-count = 0
-satisfy = 0
-satisfy_list = []
-works = []
+N = int(sys.stdin.readline().strip())
+stack = []
 for i in range(N):
-    work = int(sys.stdin.readline().strip())
-    works.append(-work)
+    line = sys.stdin.readline().strip()
 
-heapq.heapify(works)
-while -works[0] > K:
-    count += 1
-    max_work = -heapq.heappop(works)
-    satisfy = math.trunc((satisfy / 2) + max_work)
-    satisfy_list.append(satisfy)
-    max_work = max_work - M
-    heapq.heappush(works, -max_work)
-
-print(count)
-print(*satisfy_list, sep='\n')
-
+    if "1" in line:
+        number = int(line.split(" ")[1])
+        stack.append(number)
+    elif line == "2":
+        print(stack.pop() if len(stack) else -1)
+    elif line == "3":
+        print(len(stack))
+    elif line == "4":
+        print(0 if len(stack) else 1)
+    else:
+        print(stack[-1] if len(stack) else -1)

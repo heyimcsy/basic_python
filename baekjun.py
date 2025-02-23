@@ -3,34 +3,20 @@ from io import StringIO
 import sys
 import heapq
 
-# 백준 11279
-test_input ="""13
-0
-1
-2
-0
-0
-3
-2
-1
-0
-0
-0
-0
-0"""
+# 백준 10810
+test_input ="""5 4
+1 2 3
+3 4 4
+1 4 1
+2 2 2"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
+N, M = map(int, sys.stdin.readline().split())
+baskets = {i: 0 for i in range(1, N + 1)}
 
-
-N = int(sys.stdin.readline())
-stack = []
-for _ in range(N):
-    x = int(sys.stdin.readline())
-    if x == 0:
-        if not stack:
-            print(0)
-        else:
-            print(heapq.heappop(stack) * -1)
-    else:
-        heapq.heappush(stack, -x)
+for _ in range(M):
+    i, j, k = map(int, sys.stdin.readline().strip().split())
+    for n in range(i, j+1):
+        baskets[n] = k
+print(*baskets.values())

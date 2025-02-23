@@ -1,35 +1,36 @@
-import math
-import heapq
-import sys
 from io import StringIO
 
-# 백준 10773
-test_input ="""10
+import sys
+import heapq
+
+# 백준 11279
+test_input ="""13
+0
 1
+2
+0
+0
 3
-5
-4
+2
+1
 0
 0
-7
 0
 0
-6"""
+0"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-input = sys.stdin.read
-data = input().splitlines()
 
-N = int(data[0])  # 첫 번째 줄에서 N 값 가져오기
+N = int(sys.stdin.readline())
 stack = []
-
-for i in range(1, N + 1):
-    number = int(data[i])
-    if number == 0:
-        stack.pop()
+for _ in range(N):
+    x = int(sys.stdin.readline())
+    if x == 0:
+        if not stack:
+            print(0)
+        else:
+            print(heapq.heappop(stack) * -1)
     else:
-        stack.append(number)
-
-print(sum(stack))
+        heapq.heappush(stack, -x)

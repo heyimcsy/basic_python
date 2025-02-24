@@ -1,18 +1,24 @@
 from io import StringIO
 import sys
 
-# 백준 2908
-test_input = """734 893"""
+# 백준 5622
+test_input = """WA"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
+alpha = {'A': 3, 'B': 3, 'C': 3,
+         'D': 4, 'E': 4, 'F': 4,
+         'G': 5, 'H': 5, 'I': 5,
+         'J': 6, 'K': 6, 'L': 6,
+         'M': 7, 'N': 7, 'O': 7,
+         'P': 8, 'Q': 8, 'R': 8, 'S': 8,
+         'T': 9, 'U': 9, 'V': 9,
+         'W': 10, 'X': 10, 'Y': 10, 'Z': 10}
 
-def swap_digits(x):
-    num_list = list(str(x))
-    num_list[0], num_list[2] = num_list[2], num_list[0]
-    return int("".join(num_list))
+S = sys.stdin.readline()
+sum = 0
+for char in S:
+    sum += alpha[char]
 
-numbers = list(map(swap_digits, sys.stdin.readline().split()))
-
-print(max(numbers))
+print(sum)

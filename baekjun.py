@@ -1,35 +1,18 @@
 from io import StringIO
 import sys
 
-# 백준 9012
-test_input = """6
-(())())
-(((()())()
-(()())((()))
-((()()(()))(((())))()
-()()()()(()()())()
-(()((())()("""
+# 백준 3003
+test_input = """0 1 2 2 2 7"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-N = int(sys.stdin.readline())
+chess = {0: 1, 1: 1, 2: 2, 3: 2, 4: 2, 5: 8}
+new_chess = []
+N = sys.stdin.readline().split()
 
-for _ in range(N):
-    stack = []
-    text = sys.stdin.readline().strip()
-    is_valid = True
-    for c in text:
-        if c == '(':
-            stack.append(c)
-        else:
-            if not stack:
-                is_valid = False
-                break
-            stack.pop()
+for i in range(6):
+    c = str(chess[i] - int(N[i]))
+    new_chess.append(c)
 
-    # 남아 있는 '('가 있으면 잘못된 괄호 문자열
-    if is_valid and not stack:
-        print("YES")
-    else:
-        print("NO")
+print(' '.join(new_chess))

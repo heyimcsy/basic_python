@@ -1,18 +1,19 @@
+import math
 from io import StringIO
 import sys
 
-# 백준 3003
-test_input = """0 1 2 2 2 7"""
+# 백준 10988
+test_input = """levvel"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-chess = {0: 1, 1: 1, 2: 2, 3: 2, 4: 2, 5: 8}
-new_chess = []
-N = sys.stdin.readline().split()
+word = sys.stdin.readline().strip()
 
-for i in range(6):
-    c = str(chess[i] - int(N[i]))
-    new_chess.append(c)
-
-print(' '.join(new_chess))
+check = True
+half = math.floor(len(word) / 2)
+for i in range(half):
+    if word[i] != word[- (i + 1)]:
+        check = False
+        break
+print(1 if check else 0)

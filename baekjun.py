@@ -1,12 +1,19 @@
 from io import StringIO
 import sys
 
-# 백준 2743
-test_input = """pulljima"""
+# 백준 9086
+test_input = """3
+ACDKJFOWIEGHE
+O
+AB"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-S = len(sys.stdin.readline().strip())
+N = int(sys.stdin.readline())
 
-print(S)
+for _ in range(N):
+    text = sys.stdin.readline().strip()
+    f = [text[0]]
+    f.append(text[-1])
+    print("".join(f))

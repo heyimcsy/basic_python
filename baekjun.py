@@ -1,26 +1,19 @@
-import math
 from io import StringIO
-
 import sys
-import heapq
 
-# 백준 10811
-test_input = """5 4
-1 2
-3 4
-1 4
-2 2"""
+# 백준 1546
+test_input = """3
+10 20 30"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
-N, M = map(int, sys.stdin.readline().split())
+N = int(sys.stdin.readline())
 
-baskets = {i: i for i in range(1, N+1)}
+tests = list(map(int, sys.stdin.readline().split()))
+high_score = max(tests)
 
-for _ in range(M):
-    f, s = map(int, sys.stdin.readline().split())
-    count = math.ceil((s -f) /2)
-    for i in range(count):
-        baskets[f + i] , baskets[s - i] = baskets[s - i] , baskets[f + i]
+def res(x):
+    return x / high_score *100
 
-print(*baskets.values())
+new_score = sum(list(map(res, tests))) / N
+print(new_score)

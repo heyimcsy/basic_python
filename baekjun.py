@@ -1,28 +1,20 @@
 import math
 from io import StringIO
 import sys
-import re
 
-# 백준 2941
-test_input = """dz=ak"""
+# 백준 10250
+test_input = """2
+6 12 18
+30 50 72"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-word = sys.stdin.readline().strip()
+M = int(sys.stdin.readline())
 
-qro = ['c=', 'c-', 'd-', 'lj', 'nj', 's=', 'z=']
+for _ in range(M):
+    H, W, N = map(int, sys.stdin.readline().split())
+    Y = H if N % H == 0 else N % H
+    X = N // H if N % H == 0 else N // H + 1
 
-first = ['c', 'd', 'l', 'n', 's', 'z']
-w = 0
-sum = 0
-while w < len(word):
-       if word[w : w + 3] == 'dz=' :
-              w += 3
-       elif word[w : w + 2] in qro:
-              w+= 2
-       else:
-              w+=1
-       sum += 1
-
-print(sum)
+    print(f"{Y}{X:02d}")

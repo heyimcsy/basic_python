@@ -2,19 +2,14 @@ import math
 from io import StringIO
 import sys
 
-# 백준 10250
-test_input = """2
-6 12 18
-30 50 72"""
+# 백준 2475
+test_input = """0 4 2 5 6"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-M = int(sys.stdin.readline())
+def cal(x):
+    return int(x) ** 2
 
-for _ in range(M):
-    H, W, N = map(int, sys.stdin.readline().split())
-    Y = H if N % H == 0 else N % H
-    X = N // H if N % H == 0 else N // H + 1
-
-    print(f"{Y}{X:02d}")
+M = list(map(cal, sys.stdin.readline().split()))
+print(sum(M) % 10)

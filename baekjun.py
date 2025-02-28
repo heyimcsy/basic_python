@@ -3,19 +3,25 @@ from io import StringIO
 import sys
 from itertools import combinations
 
-# 백준 2798
-test_input = """5 21
-5 6 7 8 9"""
+# 백준 1676
+test_input = """10"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
-N, M = map(int, sys.stdin.readline().split())
-cards = list(sorted(map(int, sys.stdin.readline().split())))
-print(cards)
-max_sum = 0
 
-for combo in combinations(cards, 3):
-    current = sum(combo)
-    if current <= M:
-        max_sum = max(max_sum, current)
-print(max_sum)
+N = int(sys.stdin.readline())
+count = 0
+if N <= 1:
+    print(0)
+else:
+    for i in range(1, N):
+        N = N * i
+    number = list(str(N))
+
+    for i in range(len(number)-1, -1, -1):
+        char = number[i]
+        if char == '0':
+            count += 1
+        else:
+            break
+    print(count)

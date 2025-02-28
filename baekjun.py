@@ -2,21 +2,29 @@ import math
 from io import StringIO
 import sys
 
-# 백준 5086
-test_input = """8 16
-32 4
-17 5
-0 0"""
+# 백준 2581
+test_input = """60
+100"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
-text = sys.stdin.readlines()
-for i in range(len(text)-1):
-    A, B = map(int,text[i].split())
-    if A > B and A % B == 0:
-        print('multiple')
-    elif B > A and B % A == 0:
-        print('factor')
-    else:
-        print('neither')
+N = int(sys.stdin.readline())
+M = int(sys.stdin.readline())
+numbers = []
+for number in range(N, M + 1):
+    if number < 2:
+        continue
+    is_true = True
+    for n in range(2, number):
+        if number % n == 0:
+            is_true = False
+            break
+    if is_true:
+        numbers.append(number)
+
+if len(numbers) == 0:
+    print(-1)
+else:
+    print(sum(numbers))
+    print(numbers[0])

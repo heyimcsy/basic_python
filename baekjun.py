@@ -2,17 +2,27 @@ import math
 from io import StringIO
 import sys
 
-# 백준 2292
-test_input = """54"""
+# 백준 1193
+test_input = """2"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
 
 N = int(sys.stdin.readline())
 
-count = 1
-cnt = 1
-while N > count:
-    count += 6 * cnt
-    cnt += 1
-print(cnt)
+
+line = 1
+sum_line= 0
+while N > line:
+    N -= line
+    sum_line += line
+    line += 1
+
+if line % 2 == 0:
+    a = N
+    b = line + 1 - N
+else:
+    a = line + 1 - N
+    b = N
+
+print(f'{a} / {b}')

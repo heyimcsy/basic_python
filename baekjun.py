@@ -3,31 +3,20 @@ from io import StringIO
 import sys
 import heapq
 
-# 백준 28702
-test_input = """Fizz
-13
-14"""
+# 백준 1436 브루트 포스 알고리즘
+test_input = """500"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
+N = int(sys.stdin.readline().strip())
+count = 0
+number = 666
 
-first = sys.stdin.readline().strip()
-second = sys.stdin.readline().strip()
-third = sys.stdin.readline().strip()
+while True:
+    if '666' in str(number):
+        count += 1
+    if count == N:
+        break
+    number += 1
 
-number = 0
-if first.isdigit():
-    number = int(first) + 3
-elif second.isdigit():
-    number = int(second) + 2
-elif third.isdigit():
-    number = int(third) + 1
-
-if number % 3 == 0 and number % 5 == 0:
-    print('FizzBuzz')
-elif number % 3 == 0:
-    print('Fizz')
-elif number % 5 == 0:
-    print('Buzz')
-else:
-    print(number)
+print(number)

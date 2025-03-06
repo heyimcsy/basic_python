@@ -3,25 +3,29 @@ from io import StringIO
 import sys
 from collections import deque
 
-# 백준 2776
-test_input = """1
-5
-4 1 5 2 3
-5
-1 3 7 9 5"""
+# 백준 12789
+test_input = """5
+3 4 1 2 5"""
 
 # sys.stdin을 대체
 sys.stdin = StringIO(test_input)
-test_case = int(sys.stdin.readline())
 
-for _ in range(test_case):
-    _ = int(sys.stdin.readline())
-    watched = sys.stdin.readline().strip().split()
-    watched_dic = {i: 1 for i in watched}
-    M = int(sys.stdin.readline().strip())
-    memory = sys.stdin.readline().strip().split()
-    for m in memory:
-        if m in watched_dic:
-            print(watched_dic[m])
-        else:
-            print(0)
+N = int(sys.stdin.readline())
+stack = deque()
+deque_list = deque(list(map(int, sys.stdin.readline().split())))
+count = 1
+
+while deque_list or stack:
+    if deque_list and deque_list[0] == count:
+        deque_list.popleft()
+        count += 1
+    elif stack and stack[0] == count:
+        stack.popleft()
+        count += 1
+    elif deque_list:
+        stack.appendleft(deque_list.popleft())
+    else:
+        print('Sad')
+        break
+else:
+    print('Nice')
